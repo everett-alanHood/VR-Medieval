@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 37bb72f29b453d64bbe084f712d85bb4
+timeCreated: 1427469214
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33411
+  packageName: Medieval Barrows and Wagons
+  packageVersion: 1.1
+  assetPath: Assets/FreeBarrowsWagons/prefabs/wagon1.prefab
+  uploadId: 56786
