@@ -12,6 +12,9 @@ public class AmbiBowController : MonoBehaviour
     public float maxPullDistance = 0.5f;    // Maximum string pull
     public float arrowForce = 50f;          // Max velocity multiplier
 
+    [Header("Animation")]
+    public Animator bowAnimator;            // Animator component for tension animation
+
     private XRBaseInteractor bowHand;       // The hand holding the bow
     private XRBaseInteractor pullingHand;   // The hand pulling the string
     private GameObject currentArrow;
@@ -52,10 +55,15 @@ public class AmbiBowController : MonoBehaviour
         pullingHand = interactor;
         isPulling = true;
 
-        currentArrow = Instantiate(arrowPrefab, stringStart.position, Quaternion.identity);
+        currentArrow = args.interactableObject.transform.gameObject;
+
         var rb = currentArrow.GetComponent<Rigidbody>();
-        rb.isKinematic = true;
+        if (rb != null) rb.isKinematic = true;
+
+        if (bowAnimator != null)
+            bowAnimator.SetBool("Tension", true);
     }
+
 
     public void OnArrowRelease(SelectExitEventArgs args)
     {
@@ -64,17 +72,21 @@ public class AmbiBowController : MonoBehaviour
         float pullDistance = Mathf.Clamp(Vector3.Distance(stringStart.position, pullingHand.transform.position), 0f, maxPullDistance);
         Vector3 shootDir = arrowSpawnPoint.forward.normalized;
 
-        var rb = currentArrow.GetComponent<Rigidbody>();
-        rb.isKinematic = false;
-        rb.linearVelocity = shootDir * (pullDistance / maxPullDistance * arrowForce);
+        var arrowScript = currentArrow.GetComponent<ArrowInteractEvents>();
+        if (arrowScript != null)
+        {
+            arrowScript.Fire(shootDir, pullDistance / maxPullDistance * arrowForce);
+        }
 
-        // Reset string visual
         if (stringVisual != null)
             stringVisual.position = stringStart.position;
 
-        Destroy(currentArrow, 10f); // Clean up
+        if (bowAnimator != null)
+            bowAnimator.SetBool("Tension", false);
+
         currentArrow = null;
         pullingHand = null;
         isPulling = false;
     }
+
 }
