@@ -1,10 +1,9 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class Arrow : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 30f;
     public Transform tip;
 
     private Rigidbody _rigidBody;
