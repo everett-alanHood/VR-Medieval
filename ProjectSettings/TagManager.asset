@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - Object
+  - Arrow
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Arrow
   - Water
   - UI
   - navmesh
@@ -41,6 +42,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Arrow
+    uniqueID: 716620325
     locked: 0
   m_RenderingLayers:
   - Default
