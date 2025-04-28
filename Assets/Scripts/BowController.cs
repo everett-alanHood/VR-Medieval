@@ -4,108 +4,75 @@ using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof(UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable))]
 public class BowController : MonoBehaviour
 {
-    [Header("References")]
-    public Transform nockPoint;             // where arrow snaps
-    public Transform stringAttachPoint;     // follows your pulling hand
-    public Transform stringRestPoint;       // rest (zero) position of the string
+    [Tooltip("Where the arrow should snap when nocked")]
+    public Transform nockPoint;
 
-    [Header("Tuning")]
-    public float launchForceMultiplier = 25f;
+    [Tooltip("Impulse applied to the arrow when released")]
+    public float launchForce = 25f;
 
-    // runtime
-    UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable   _bowInteractable;
-    Transform            _bowHand;        // who’s holding the bow
-    GameObject           _currentArrow;
-    UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable   _arrowInteractable;
-    Transform            _arrowHand;      // who’s holding the arrow
-    Vector3              _stringRestLocalPos;
+    // runtime state
+    private GameObject _currentArrow;
+    private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable _arrowGrabInteractable;
+    private Rigidbody _arrowRb;
 
-    void Awake()
+    void Reset()
     {
-        _bowInteractable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
-        _bowInteractable.selectEntered.AddListener(OnBowGrabbed);
-        _bowInteractable.selectExited .AddListener(OnBowReleased);
-
-        _stringRestLocalPos = stringAttachPoint.localPosition;
-    }
-
-    void OnBowGrabbed(SelectEnterEventArgs args)
-    {
-        _bowHand = args.interactorObject.transform;
-    }
-
-    void OnBowReleased(SelectExitEventArgs args)
-    {
-        if (args.interactorObject.transform == _bowHand)
-            _bowHand = null;
+        // ensure this track collider is a trigger
+        var col = GetComponent<Collider>();
+        if (col != null)
+            col.isTrigger = true;
     }
 
     void OnTriggerEnter(Collider other)
-    
     {
-        {   
-            Debug.Log($"[BowController] TriggerEnter on {other.name}, tag={other.tag}");
-            if (_bowHand == null || _currentArrow != null) return;
-            if (!other.CompareTag("Arrow")) return;
-            // … rest of your nock code …
-        }
+        // only one arrow at a time
+        if (_currentArrow != null) return;
 
-        // Only if bow is held, no arrow already nocked, and collider is tagged "Arrow"
-        if (_bowHand == null || _currentArrow != null) return;
+        // must be tagged "Arrow"
         if (!other.CompareTag("Arrow")) return;
 
-        // Grab its XRGrabInteractable
-        var xi = other.GetComponentInParent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
-        if (xi == null) return;
+        // find its grab interactable on the root
+        var grab = other.GetComponentInParent<
+            UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+        if (grab == null) return;
 
-        _currentArrow       = xi.gameObject;
-        _arrowInteractable  = xi;
-        xi.selectEntered   .AddListener(OnArrowGrabbed);
-        xi.selectExited    .AddListener(OnArrowReleased);
-    }
+        // cache references
+        _currentArrow = grab.gameObject;
+        _arrowGrabInteractable = grab;
+        _arrowRb = _currentArrow.GetComponent<Rigidbody>();
 
-    void OnArrowGrabbed(SelectEnterEventArgs args)
-    {
-        _arrowHand = args.interactorObject.transform;
+        // disable grabbing so it stays in place
+        _arrowGrabInteractable.enabled = false;
+        _arrowGrabInteractable.selectExited.AddListener(OnArrowReleased);
 
-        // Snap to the nock point
-        _currentArrow.transform.SetParent(nockPoint);
+        // freeze physics and snap to the nockPoint
+        _arrowRb.isKinematic = true;
+        _currentArrow.transform.SetParent(nockPoint, false);
         _currentArrow.transform.localPosition = Vector3.zero;
         _currentArrow.transform.localRotation = Quaternion.identity;
-
-        // Freeze physics
-        var rb = _currentArrow.GetComponent<Rigidbody>();
-        rb.isKinematic = true;
     }
 
-    void Update()
+    private void OnArrowReleased(SelectExitEventArgs args)
     {
-        // While nocked & held, stretch the string toward your hand
-        if (_currentArrow != null && _arrowHand != null)
-            stringAttachPoint.position = _arrowHand.position;
-    }
+        // only react to our arrow’s release event
+        if (args.interactableObject != _arrowGrabInteractable) return;
 
-    void OnArrowReleased(SelectExitEventArgs args)
-    {
-        if (args.interactorObject.transform != _arrowHand) return;
+        // unhook before we modify state
+        _arrowGrabInteractable.selectExited.RemoveListener(OnArrowReleased);
 
-        // Calculate draw distance
-        float pullDist = Vector3.Distance(stringRestPoint.position,
-                                          stringAttachPoint.position);
+        // detach and restore physics
+        _currentArrow.transform.SetParent(null, true);
+        _arrowRb.isKinematic = false;
 
-        // Unhook listeners
-        _arrowInteractable.selectEntered.RemoveListener(OnArrowGrabbed);
-        _arrowInteractable.selectExited .RemoveListener(OnArrowReleased);
+        // launch
+        _arrowRb.linearVelocity = nockPoint.forward * launchForce;
 
-        // Fire!
-        _currentArrow.transform.SetParent(null);
-        var rb = _currentArrow.GetComponent<Rigidbody>();
-        rb.isKinematic = false;
-        rb.linearVelocity = nockPoint.forward * pullDist * launchForceMultiplier;
+        // re-enable grabbing
+        _arrowGrabInteractable.enabled = true;
 
-        // Reset
+        // clear state
         _currentArrow = null;
-        _arrowHand    = null;
-        stringAttachPoint.localPosition = _stringRestLocalPos;
+        _arrowGrabInteractable = null;
+        _arrowRb = null;
     }
 }

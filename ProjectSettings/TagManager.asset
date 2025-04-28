@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Object
   - Arrow
+  - ArrowNock
   layers:
   - Default
   - TransparentFX
