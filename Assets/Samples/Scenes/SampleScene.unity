@@ -3190,12 +3190,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 621285394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef73fb9722967a349926975f763d2404, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f532693a08162e4bb487a679fa27b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chatBox: {fileID: 1050748718}
   insultText: {fileID: 1865946519}
-  insultInterval: 2.5
+  player: {fileID: 1872177242}
+  triggerDistance: 3
+  insultInterval: 2
 --- !u!1001 &628205434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6277,13 +6279,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 19842a56ef341f2428dcd5ff7e86eff6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 621285399}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 19842a56ef341f2428dcd5ff7e86eff6, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 621285398}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 19842a56ef341f2428dcd5ff7e86eff6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 621285397}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 19842a56ef341f2428dcd5ff7e86eff6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 621285399}
     - targetCorrespondingSourceObject: {fileID: 6708977406671239878, guid: 19842a56ef341f2428dcd5ff7e86eff6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 150247650}
@@ -9034,6 +9036,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1670256624, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670256625, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670256625, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670256625, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -9447,7 +9465,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -10843,6 +10861,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865946517}
   m_CullTransparentMesh: 1
+--- !u!4 &1872177242 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 1682970918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1924989539
 PrefabInstance:
   m_ObjectHideFlags: 0
