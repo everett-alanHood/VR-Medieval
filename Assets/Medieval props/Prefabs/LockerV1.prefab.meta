@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 765a92780f284094a9016db0df522583
+timeCreated: 1436538893
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/LockerV1.prefab
+  uploadId: 72216

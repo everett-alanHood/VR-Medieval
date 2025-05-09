@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 862d80f8d3382224c99a336ed6e421a8
+timeCreated: 1436443660
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/LanternV2.prefab
+  uploadId: 72216

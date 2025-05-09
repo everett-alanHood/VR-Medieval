@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 64d5e6c084826a44586cccb8f9e13b34
+timeCreated: 1436455752
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/CandleV1.prefab
+  uploadId: 72216

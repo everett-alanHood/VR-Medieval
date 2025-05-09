@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5e755bb5252c9df48815b23ec0889366
+timeCreated: 1436536261
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/BoxV1.prefab
+  uploadId: 72216

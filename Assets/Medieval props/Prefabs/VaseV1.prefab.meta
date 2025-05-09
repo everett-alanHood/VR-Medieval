@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 69ac12ca690e7574e813568c8425751f
+timeCreated: 1436458372
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/VaseV1.prefab
+  uploadId: 72216

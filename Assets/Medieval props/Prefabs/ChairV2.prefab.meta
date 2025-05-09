@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 54514eb8a9e75784297174f2323c568c
+timeCreated: 1436455985
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/ChairV2.prefab
+  uploadId: 72216

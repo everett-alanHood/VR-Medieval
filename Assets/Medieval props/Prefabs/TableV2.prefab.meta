@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 47d8fe63372eab540a906635b400a7f9
+timeCreated: 1436458157
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/TableV2.prefab
+  uploadId: 72216

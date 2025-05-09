@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2db2358237793e548a7be495733d9529
+timeCreated: 1436707440
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/BigSpoon.prefab
+  uploadId: 72216

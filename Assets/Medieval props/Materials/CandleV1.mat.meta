@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ddd0d34ddc8e80d4486c7e9004e70ac8
+timeCreated: 1436431037
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Materials/CandleV1.mat
+  uploadId: 72216

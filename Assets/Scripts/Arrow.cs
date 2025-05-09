@@ -3,17 +3,24 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    
     public float speed = 30f;
     public Transform tip;
+    public AudioClip shootingSound;
+    public AudioClip impactSound;
+    [Range(0f, 1f)] public float firingVolume = 0.5f;
+    [Range(0f, 1f)] public float impactVolume = 0.5f;
 
     private Rigidbody _rigidBody;
     private bool _inAir = false;
     private Vector3 _lastPosition = Vector3.zero;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
+        _audioSource = gameObject.AddComponent<AudioSource>();
+        _audioSource.playOnAwake = false;
+
         PullInteraction.PullActionReleased += Release;
         Stop();
     }
@@ -33,6 +40,10 @@ public class Arrow : MonoBehaviour
 
         Vector3 force = transform.forward * value * speed;
         _rigidBody.AddForce(force, ForceMode.Impulse);
+
+        // 🔊 Play shooting sound at lower volume
+        if (shootingSound != null)
+            _audioSource.PlayOneShot(shootingSound, firingVolume);
 
         StartCoroutine(RotateWithVelocity());
         _lastPosition = tip.position;
@@ -75,7 +86,10 @@ public class Arrow : MonoBehaviour
                     body.AddForce(_rigidBody.linearVelocity, ForceMode.Impulse);
                 }
 
-                // 🔽 NEW: Trigger animation if Animator is present and in Idle state
+                // 🎯 Play impact sound
+                if (impactSound != null)
+                    _audioSource.PlayOneShot(impactSound, impactVolume);
+
                 if (hitInfo.transform.TryGetComponent(out Animator animator))
                 {
                     AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
@@ -83,33 +97,22 @@ public class Arrow : MonoBehaviour
                     {
                         animator.SetTrigger("Hit");
                     }
-                
                 }
-                if (hitInfo.transform.TryGetComponent(out Animator animator1))
-{{
-    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-    if (stateInfo.IsName("Idle"))
-    {
-        animator.SetTrigger("Hit");
-    }
-}
 
-// 🔽 Add this to trigger ragdoll if the object is Bob
-if (hitInfo.transform.name == "Bob" || hitInfo.transform.root.name == "Bob")
-{
-    var ragdoll = hitInfo.transform.GetComponentInParent<RagdollToggle>();
-    if (ragdoll != null)
-    {
-        ragdoll.TriggerRagdoll();
-    }
-}
-            
+                if (hitInfo.transform.name == "Bob" || hitInfo.transform.root.name == "Bob")
+                {
+                    var ragdoll = hitInfo.transform.GetComponentInParent<RagdollToggle>();
+                    if (ragdoll != null)
+                    {
+                        ragdoll.TriggerRagdoll();
+                    }
+                }
 
                 Stop();
             }
         }
-        }
     }
+
     private void Stop()
     {
         _inAir = false;

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b832d5bbd6fa69345b19956d84fd0bad
+timeCreated: 1436709530
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/BeerBarrelV1.prefab
+  uploadId: 72216

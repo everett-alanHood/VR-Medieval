@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 801c289c56c60334a89a3f8a7a086eaf
+timeCreated: 1436371367
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Materials/BathtubV1.mat
+  uploadId: 72216

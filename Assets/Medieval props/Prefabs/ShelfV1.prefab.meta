@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b3458b0334ca1b941b65c242203651e5
+timeCreated: 1436724702
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/ShelfV1.prefab
+  uploadId: 72216

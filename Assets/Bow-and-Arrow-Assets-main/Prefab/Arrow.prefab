@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1769337597633466026}
   - component: {fileID: -5370721791451237636}
   - component: {fileID: -7265911324127205202}
-  - component: {fileID: -6024508216235837688}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -77,18 +76,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   tip: {fileID: 1769337598482281036}
---- !u!114 &-6024508216235837688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769337597633466025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7d8bad266080a44897f4577da88c5c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  shootingSound: {fileID: 8300000, guid: 2876d0427de348c459428be990359852, type: 3}
+  impactSound: {fileID: 8300000, guid: 2d5754120a79af840bf3680fc65f92d9, type: 3}
+  firingVolume: 0.5
+  impactVolume: 0.5
 --- !u!1 &1769337598482281027
 GameObject:
   m_ObjectHideFlags: 0

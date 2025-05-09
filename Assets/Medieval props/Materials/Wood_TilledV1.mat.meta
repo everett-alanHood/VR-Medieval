@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 39c317b8e254726409e8430e99a2c8d4
+timeCreated: 1436283986
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Materials/Wood_TilledV1.mat
+  uploadId: 72216

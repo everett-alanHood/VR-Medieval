@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 30961c26e8ea2f0499c42aadda2322a6
+timeCreated: 1436464449
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Materials/PileOfWoodV2.mat
+  uploadId: 72216

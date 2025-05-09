@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7ce3b47ac3a119d4fbd89afaa955017e
+timeCreated: 1436455646
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41540
+  packageName: Medieval props
+  packageVersion: 1.0
+  assetPath: Assets/Medieval props/Prefabs/BookV1.prefab
+  uploadId: 72216
