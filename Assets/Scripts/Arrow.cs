@@ -83,13 +83,33 @@ public class Arrow : MonoBehaviour
                     {
                         animator.SetTrigger("Hit");
                     }
+                
                 }
+                if (hitInfo.transform.TryGetComponent(out Animator animator1))
+{{
+    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+    if (stateInfo.IsName("Idle"))
+    {
+        animator.SetTrigger("Hit");
+    }
+}
+
+// 🔽 Add this to trigger ragdoll if the object is Bob
+if (hitInfo.transform.name == "Bob" || hitInfo.transform.root.name == "Bob")
+{
+    var ragdoll = hitInfo.transform.GetComponentInParent<RagdollToggle>();
+    if (ragdoll != null)
+    {
+        ragdoll.TriggerRagdoll();
+    }
+}
+            
 
                 Stop();
             }
         }
+        }
     }
-
     private void Stop()
     {
         _inAir = false;
