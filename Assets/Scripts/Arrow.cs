@@ -84,6 +84,17 @@ public class Arrow : MonoBehaviour
                     transform.parent = hitInfo.transform;
                     body.AddForce(_rigidBody.linearVelocity, ForceMode.Impulse);
                 }
+
+                // 🔽 NEW: Trigger animation if Animator is present and in Idle state
+                if (hitInfo.transform.TryGetComponent(out Animator animator))
+                {
+                    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+                    if (stateInfo.IsName("Idle"))
+                    {
+                        animator.SetTrigger("Hit");
+                    }
+                }
+
                 Stop();
             }
         }
