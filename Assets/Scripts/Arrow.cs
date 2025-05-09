@@ -3,6 +3,17 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+        void OnCollisionEnter(Collision collision)
+    {
+        RagdollActivator ragdoll = collision.collider.GetComponentInParent<RagdollActivator>();
+        if (ragdoll != null)
+        {
+            ragdoll.TriggerRagdoll();
+        }
+
+        // Optional: Destroy arrow on impact
+        Destroy(gameObject);
+    }
     public float speed = 30f;
     public Transform tip;
 
